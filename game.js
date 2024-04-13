@@ -12,6 +12,7 @@ let gameBoard = document.getElementById('game-board');
 let images = [];
 let possiblePokemons = [];
 let flippedCards = [];
+let foundpairs = 0;
 
 document.documentElement.style.setProperty('--longueur', longueur);
 document.documentElement.style.setProperty('--largeur', largeur);
@@ -29,7 +30,7 @@ function generateRandomPokemons() {
     for (let i=0 ; i<NUM_PAIRS ; i++) {
         let randomIndex = Math.floor(Math.random() * possiblePokemons.length);
         let randomPokemon = possiblePokemons[randomIndex];
-        let shiny = Math.floor(Math.random() * 2);
+        let shiny = Math.floor(Math.random() * 1024);
         if (shiny === 0 && randomPokemon < 1024) {
             randomPokemon = `shiny/${randomPokemon}`;
         }
@@ -50,6 +51,7 @@ const shuffle = (array) => {
 
 function displayGrid() {
     images = shuffle(images);
+    let cid = 0;
     images.forEach(image => {
         let card = document.createElement('div');
         card.classList.add('card');
@@ -60,14 +62,15 @@ function displayGrid() {
           revealCard(img);
         });
         gameBoard.appendChild(card);
-      });
+    });
 
 }
 
 // Fonction pour retourner une carte
 const revealCard = (img) => {
-    if (flippedCards.length < 2) {
+    if (flippedCards.length < 2 && img.style.display != 'block') {
         img.style.display = 'block';
+        img.removeEventListener('click', revealCard);
         flippedCards.push(img);
         if (flippedCards.length === 2) {
             if (flippedCards[0].src === flippedCards[1].src) {
@@ -87,10 +90,17 @@ const checkForMatch = () => {
         flippedCards.forEach(img => {
             img.removeEventListener('click', revealCard);
         });
+        foundpairs += 1;
+        if(foundpairs === NUM_PAIRS){
+
+            setTimeout(resetGame, 1500);
+            foundpairs = 0;
+        }
     } else {
         // Cartes différentes, les cacher à nouveau
         flippedCards.forEach(img => {
             img.style.display = 'none';
+            img.addEventListener('click', revealCard);
         });
     }
     flippedCards = []; // Réinitialiser la liste des cartes retournées
@@ -110,6 +120,8 @@ function resetGame() {
     generateRandomPokemons();
     displayGrid();
 }
+
+
 
 
 /// MAIN

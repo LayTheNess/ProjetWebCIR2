@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jeu des Paires Pokémon</title>
     <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
-    <div class="game-board" id="game-board">
-        <!-- Les cartes seront générées ici -->
+    
+    <div id="menu"> <!-- barre de menu -->
+        <ul>
+            <li class="classmenu hlink"><a href="index.html">Menu</a></li>
+            <li class="classmenu hlink"><a href="">Options</a></li>
+
+        </ul>
     </div>
-    <button id="reset-button">Nouvelle Partie</button>
+    <div id="bg"></div>
+    <div class="front">
+        <div class="game-board" id="game-board">
+            <!-- Les cartes seront générées ici -->
+        </div>
+        <button id="reset-button">Nouvelle Partie</button>
+    </div>
     <script src="game.js"></script>
 </body>
 </html>
