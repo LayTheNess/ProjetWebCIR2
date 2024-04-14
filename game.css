@@ -1,0 +1,257 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+li{list-style:none}
+
+
+body{
+  display:inline;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+    caret-color: transparent;
+  }
+  
+  .card img {
+    display: none;
+  }
+
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(var(--longueur), 100px); /* Définit 8 colonnes de largeur 100px chacune */
+    grid-template-rows: repeat(var(--largeur), 100px); /* Définit 4 lignes de hauteur 100px chacune */
+    margin-left: -1%;
+    gap: 10px; /* Espace entre les cartes */
+    justify-content: center; /* Centre les cartes horizontalement */
+    align-content: center; /* Centre les cartes verticalement */
+    caret-color: transparent;
+    height: 80%;
+    margin-top: 0;
+    padding-top: -5%;
+    z-index:1;
+}
+
+#reset-button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Impact, fantasy;
+  color: rgb(255, 196, 0);
+  -webkit-text-stroke: 1px rgb(56, 56, 56);
+  text-align: center;
+  font-size: 150%;
+  background-color: none;
+  background-position: center;
+  background-image: url("wood_bg.jpg");
+  background-size: cover;
+  width: 180%;
+  max-width: 200px;
+  z-index: 5;
+  border: 7px ridge black;
+  border-radius: 10px;
+}
+
+
+
+.front{
+  position: relative;
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  backdrop-filter: blur(1.7px) grayscale(40%);
+}
+
+main{
+  position:relative;
+  height:100vh;
+  width:100%;
+}
+#bg{
+  position:absolute;
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('map.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#menu{
+  position:relative;
+  margin-left: 0px;
+  text-align: center;
+  background-image: url("wood_bg.jpg");
+  width: 100%;
+  height: 80px;
+  z-index: 15;
+}
+
+#menu ul{
+  height: 80px;
+  margin-top: 0;
+}
+
+#menu ul li{
+  height: 80px;
+  width: 15%;
+  font-size: 250%;
+  text-align: center;
+  font-family: Impact, fantasy;
+  list-style: none;
+  -webkit-text-stroke: 1px rgb(56, 56, 56);
+  justify-items: center; /* centre horizontalement */
+  align-items: center; /* centre verticalement */
+}
+
+#menu ul li a{
+  position: relative;
+  width: 100%;
+  height: 80px;
+  margin-top: 0;
+  padding: 22px;
+  text-align: center;
+}
+
+.classmenu{
+
+  float: left;
+}
+
+.hlink:hover{
+  backdrop-filter: brightness(160%);
+}
+
+a:visited{
+
+  -webkit-text-stroke: 1px rgb(56, 56, 56);
+}
+
+a {
+  text-align: center;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 10%;
+  height: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url(wood_font.jpg);
+  background-repeat: repeat;
+  filter:  brightness(120%);
+  justify-items: center; /* centre horizontalement */
+  align-items: center; /* centre verticalement */
+  text-decoration:none
+}
+
+footer {
+  background-image: url("wood_bg.jpg");
+  font-family:Arial, Helvetica, sans-serif;
+  height:200px;
+  color: white;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0.5px;
+  border-style: solid;
+  border-color: white;
+  padding: 0px;
+  grid-area: footer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+footer div h2 {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url(wood_font.jpg);
+  background-repeat: repeat;
+  filter:  brightness(120%);
+  font-family: Impact, fantasy;
+  position: relative;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  top: 10%;
+  margin-bottom:50px;
+}
+
+footer img {
+  margin-left: 18px;
+}
+
+footer a,
+footer .contacter p {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url(wood_font.jpg);
+  background-repeat: repeat;
+  filter:  brightness(120%);
+  font-size:12px;
+  margin-top:10px;
+  color: white;
+  text-decoration: None;
+  font-family: Impact, fantasy;
+  padding: 0;
+  font-style: italic;
+}
+
+.reseaux ul,
+.contacter ul,
+.legal ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#logo2,
+#logo3,
+#logo4 {
+  height: 15px;
+  width: 15px;
+  border-radius: 5px;
+}
+
+.insta:hover,
+.youtube:hover,
+.twitter:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
