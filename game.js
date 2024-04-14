@@ -23,15 +23,12 @@ function generateRandomPokemons() {
     for (let i=1 ; i<1026 ; i++) {
         possiblePokemons.push(i);
     }
-    for (let i= 10000 ; i<10264 ; i++) {
-        possiblePokemons.push(i);
-    }
     
     for (let i=0 ; i<NUM_PAIRS ; i++) {
         let randomIndex = Math.floor(Math.random() * possiblePokemons.length);
         let randomPokemon = possiblePokemons[randomIndex];
         let shiny = Math.floor(Math.random() * 1024);
-        if (shiny === 0 && randomPokemon < 1024) {
+        if (shiny === 0 && randomPokemon < 1026) {
             randomPokemon = `shiny/${randomPokemon}`;
         }
         possiblePokemons.splice(randomIndex,1);
@@ -69,6 +66,7 @@ function displayGrid() {
 // Fonction pour retourner une carte
 const revealCard = (img) => {
     if (flippedCards.length < 2 && img.style.display != 'block') {
+        console.log(img);
         img.style.display = 'block';
         img.removeEventListener('click', revealCard);
         flippedCards.push(img);
@@ -86,10 +84,6 @@ const revealCard = (img) => {
   
 const checkForMatch = () => {
     if (flippedCards[0].src === flippedCards[1].src) {
-        // Cartes identiques, les laisser affichées
-        flippedCards.forEach(img => {
-            img.removeEventListener('click', revealCard);
-        });
         foundpairs += 1;
         if(foundpairs === NUM_PAIRS){
 
@@ -100,7 +94,6 @@ const checkForMatch = () => {
         // Cartes différentes, les cacher à nouveau
         flippedCards.forEach(img => {
             img.style.display = 'none';
-            img.addEventListener('click', revealCard);
         });
     }
     flippedCards = []; // Réinitialiser la liste des cartes retournées
